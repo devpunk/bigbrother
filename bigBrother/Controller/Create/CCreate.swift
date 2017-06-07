@@ -2,11 +2,8 @@ import UIKit
 
 class CCreate:Controller<VCreate>
 {
-    let model:MCreate
-    
     override init()
     {
-        model = MCreate()
         super.init()
     }
     
@@ -16,22 +13,6 @@ class CCreate:Controller<VCreate>
     }
     
     //MARK: public
-    
-    func refreshFrame()
-    {
-        UIApplication.shared.keyWindow!.endEditing(true)
-        
-        guard
-        
-            let view:VCreate = self.view as? VCreate
-        
-        else
-        {
-            return
-        }
-        
-        view.collectionView.reloadData()
-    }
     
     func cancel()
     {
@@ -45,15 +26,5 @@ class CCreate:Controller<VCreate>
         }
         
         parent.pop(horizontal:ControllerParent.Horizontal.right)
-    }
-    
-    func done()
-    {
-        
-    }
-    
-    func addFrame()
-    {
-        model.addFrame()
     }
 }
