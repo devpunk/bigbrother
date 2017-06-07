@@ -4,9 +4,12 @@ class VCreateBar:UIView
 {
     private weak var controller:CCreate!
     private let kStartSize:CGFloat = 60
+    private var recording:Bool
     
     init(controller:CCreate)
     {
+        recording = false
+        
         super.init(frame:CGRect.zero)
         clipsToBounds = true
         backgroundColor = UIColor.clear
