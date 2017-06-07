@@ -1,4 +1,5 @@
 import UIKit
+import ReplayKit
 
 class CCreate:Controller<VCreate>
 {
@@ -30,6 +31,14 @@ class CCreate:Controller<VCreate>
     
     func startRecording()
     {
+        RPScreenRecorder.shared().startRecording
+        { [weak self] (error:Error?) in
         
+            if let error:Error = error
+            {
+                print("error")
+                print(error)
+            }
+        }
     }
 }
