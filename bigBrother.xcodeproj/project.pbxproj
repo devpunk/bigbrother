@@ -39,6 +39,7 @@
 		DA9188701EE847D1002B840B /* VToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91884E1EE847D1002B840B /* VToast.swift */; };
 		DA9188711EE847D1002B840B /* VCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9188501EE847D1002B840B /* VCreate.swift */; };
 		DA9188721EE847D1002B840B /* VHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9188521EE847D1002B840B /* VHome.swift */; };
+		DA9188741EE849D4002B840B /* VCreateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9188731EE849D4002B840B /* VCreateBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		DA91884E1EE847D1002B840B /* VToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VToast.swift; sourceTree = "<group>"; };
 		DA9188501EE847D1002B840B /* VCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCreate.swift; sourceTree = "<group>"; };
 		DA9188521EE847D1002B840B /* VHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHome.swift; sourceTree = "<group>"; };
+		DA9188731EE849D4002B840B /* VCreateBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCreateBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +112,8 @@
 			children = (
 				DA9188201EE847D0002B840B /* Controller */,
 				DA9188291EE847D0002B840B /* Model */,
-				DA91882E1EE847D0002B840B /* Support */,
 				DA9188411EE847D1002B840B /* View */,
+				DA91882E1EE847D0002B840B /* Support */,
 				DA91881A1EE846D3002B840B /* Info.plist */,
 			);
 			path = bigBrother;
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				DA9188501EE847D1002B840B /* VCreate.swift */,
+				DA9188731EE849D4002B840B /* VCreateBar.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				DA9188701EE847D1002B840B /* VToast.swift in Sources */,
 				DA9188611EE847D1002B840B /* ExtensionUIColor.swift in Sources */,
 				DA9188621EE847D1002B840B /* ExtensionUIFont.swift in Sources */,
+				DA9188741EE849D4002B840B /* VCreateBar.swift in Sources */,
 				DA91886B1EE847D1002B840B /* VCollection.swift in Sources */,
 				DA9188561EE847D1002B840B /* CCreate.swift in Sources */,
 				DA9188691EE847D1002B840B /* VBlur.swift in Sources */,
