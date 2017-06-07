@@ -27,4 +27,9 @@ class CCreate:Controller<VCreate>
         
         parent.pop(horizontal:ControllerParent.Horizontal.right)
     }
+    
+    func startRecording()
+    {
+        
+    }
 }

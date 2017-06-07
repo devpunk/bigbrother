@@ -44,6 +44,6 @@ class VCreateBar:UIView
     
     func actionStart(sender button:UIButton)
     {
-        
+        controller.startRecording()
     }
 }
