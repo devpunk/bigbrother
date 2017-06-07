@@ -42,16 +42,6 @@ class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate, RPScreenReco
     {
         RPScreenRecorder.shared().delegate = self
         
-        if RPScreenRecorder.shared().isRecording
-        {
-            print("is recording")
-            
-            RPScreenRecorder.shared().discardRecording
-            {
-                print("recording discarded")
-            }
-        }
-        
         RPScreenRecorder.shared().startRecording
         { (error:Error?) in
         
