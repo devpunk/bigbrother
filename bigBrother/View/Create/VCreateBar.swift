@@ -47,6 +47,15 @@ class VCreateBar:UIView
     
     func actionStart(sender button:UIButton)
     {
-        controller.startRecording()
+        if recording
+        {
+            recording = false
+            controller.stopRecording()
+        }
+        else
+        {
+            recording = true
+            controller.startRecording()
+        }
     }
 }
