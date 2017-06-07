@@ -3,7 +3,7 @@ import ReplayKit
 
 class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate, RPScreenRecorderDelegate
 {
-    
+    private weak var timer:Timer?
     
     override init()
     {
@@ -13,6 +13,13 @@ class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate, RPScreenReco
     required init?(coder:NSCoder)
     {
         return nil
+    }
+    
+    //MARK: actions
+    
+    func actionTimer(sender timer:Timer)
+    {
+        print("\(Date().timeIntervalSince1970)")
     }
     
     //MARK: public
@@ -46,7 +53,7 @@ class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate, RPScreenReco
         }
         
         RPScreenRecorder.shared().startRecording
-        { [weak self] (error:Error?) in
+        { (error:Error?) in
         
             if let error:Error = error
             {
@@ -56,12 +63,20 @@ class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate, RPScreenReco
             else
             {
                 print("start no error")
+                self.timer = Timer.scheduledTimer(
+                    timeInterval:1,
+                    target:self,
+                    selector:#selector(self.actionTimer(sender:)),
+                    userInfo:nil,
+                    repeats:true)
             }
         }
     }
     
     func stopRecording()
     {
+        timer?.invalidate()
+        
         RPScreenRecorder.shared().stopRecording
         { [weak self] (preview:RPPreviewViewController?, error:Error?) in
             
