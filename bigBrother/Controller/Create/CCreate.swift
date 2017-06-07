@@ -1,8 +1,10 @@
 import UIKit
 import ReplayKit
 
-class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate
+class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate, RPScreenRecorderDelegate
 {
+    
+    
     override init()
     {
         super.init()
@@ -31,6 +33,18 @@ class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate
     
     func startRecording()
     {
+        RPScreenRecorder.shared().delegate = self
+        
+        if RPScreenRecorder.shared().isRecording
+        {
+            print("is recording")
+            
+            RPScreenRecorder.shared().discardRecording
+            {
+                print("recording discarded")
+            }
+        }
+        
         RPScreenRecorder.shared().startRecording
         { [weak self] (error:Error?) in
         
@@ -48,20 +62,51 @@ class CCreate:Controller<VCreate>, RPPreviewViewControllerDelegate
     
     func stopRecording()
     {
-        let rpPreview:RPPreviewViewController = RPPreviewViewController()
-        rpPreview.previewControllerDelegate = self
-        
-        RPScreenRecorder.shared().stopRecording( handler: { previewViewController, error in
-            if let error = error {
-                print("\(error.localizedDescription)")
+        RPScreenRecorder.shared().stopRecording
+        { [weak self] (preview:RPPreviewViewController?, error:Error?) in
+            
+            if let error:Error = error
+            {
+                print("error: \(error)")
             }
-            /*
-            if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-                rpPreview.modalPresentationStyle = UIModalPresentationStyle.popover
-                rpPreview.popoverPresentationController?.sourceRect = CGRect.zero
-                rpPreview.popoverPresentationController?.sourceView = self.view
-            }*/
-            self.present(rpPreview, animated: true, completion: nil)
-        })
+            else
+            {
+                print("stop no error")
+            }
+            
+            if let preview:RPPreviewViewController = preview
+            {
+                preview.previewControllerDelegate = self
+                self?.present(preview, animated:true, completion:nil)
+            }
+            else
+            {
+                print("no preview")
+            }
+        }
+    }
+    
+    //MARK: preview delegate
+    
+    func previewControllerDidFinish(_ previewController: RPPreviewViewController)
+    {
+        self.dismiss(animated:true, completion:nil)
+    }
+    
+    func previewController(_ previewController: RPPreviewViewController, didFinishWithActivityTypes activityTypes: Set<String>)
+    {
+        print("asd")
+    }
+    
+    //MARK: recorder delegate
+    
+    func screenRecorderDidChangeAvailability(_ screenRecorder: RPScreenRecorder)
+    {
+        print("available: \(screenRecorder.isAvailable)")
+    }
+    
+    func screenRecorder(_ screenRecorder: RPScreenRecorder, didStopRecordingWithError error: Error, previewViewController: RPPreviewViewController?)
+    {
+        print("did stop recording")
     }
 }
